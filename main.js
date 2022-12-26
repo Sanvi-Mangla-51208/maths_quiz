@@ -35,13 +35,16 @@ function send() {
    document.getElementById("number2").value="";
 }
 
+question_turn = "player1";
+answer_turn = "player2";
+
 
 function check(){
    get_answer = document.getElementById("input_check_box").value;
    answer = get_answer.toLowerCase();
-   console.log("answer in lowercase: " + answer);
+   console.log("answer : " + answer);
    if( answer == actual_answer){
-       if(player_answer == "player1"){
+       if(answer_turn == "player1"){
            player1_score=player1_score+1;
            document.getElementById("player1_score").innerHTML=player1_score;
        }
@@ -53,30 +56,28 @@ function check(){
        
    }
 
-   if(player_question == "player1"){
-       player_question = "player2";
-       document.getElementById("player_question").innerHTML="question turn: " + player2_name;
-       
-   }
-
-   else{
-       question_turn = "player1";
-       document.getElementById("player_question").innerHTML="question turn: " + player1_name;
-   }
-
-   if(answer_turn == "player1"){
-       answer_turn = "player2";
-       document.getElementById("player_answer").innerHTML="answer turn: " + player2_name;
-   }
-
-   else{
-       answer_turn = "player1";
-       document.getElementById("player_answer").innerHTML="answer turn: " + player1_name;
-   }
-
-   document.getElementById("output").innerHTML="";
-      
+   if(question_turn == "player1"){
+    question_turn = "player2";
+    document.getElementById("player_question").innerHTML="question turn: " + player2_name;
+    
 }
 
+else{
+    question_turn = "player1";
+    document.getElementById("player_question").innerHTML="question turn: " + player1_name;
+}
 
+if(answer_turn == "player1"){
+    answer_turn = "player2";
+    document.getElementById("player_answer").innerHTML="answer turn: " + player2_name;
+}
+
+else{
+    answer_turn = "player1";
+    document.getElementById("player_answer").innerHTML="answer turn: " + player1_name;
+}
+
+document.getElementById("output").innerHTML="";
+   
+}
 
